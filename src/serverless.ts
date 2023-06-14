@@ -4,7 +4,7 @@ import { AppModule } from './app.module';
 
 let cachedServer;
 
-export const handler = async (event, context) => {
+const handler = async (event, context) => {
   if (!cachedServer) {
     const nestApp = await NestFactory.create(AppModule);
     await nestApp.init();
@@ -15,3 +15,5 @@ export const handler = async (event, context) => {
 
   return cachedServer(event, context);
 };
+
+export { handler };
