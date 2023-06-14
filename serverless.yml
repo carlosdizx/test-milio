@@ -10,6 +10,14 @@ provider:
   memorySize: 2048
   logRetentionInDays: 1
   timeout: 25
+  environment:
+    DB_HOST: ${env:DB_HOST}
+    DB_PORT: ${env:DB_PORT}
+    DB_USERNAME: ${env:DB_USERNAME}
+    DB_PASSWORD: ${env:DB_PASSWORD}
+    DB_DATABASE: ${env:DB_DATABASE}
+    JWT_SECRET: ${env:JWT_SECRET}
+    JWT_EXPIRES: ${env:JWT_EXPIRES}
 
 functions:
   api:
@@ -25,3 +33,4 @@ functions:
 plugins:
   - serverless-jetpack
   - serverless-offline
+  - serverless-dotenv-plugin
