@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { UserModule } from './user/user.module';
 
 const host = process.env.DB_HOST;
 const port = process.env.DB_PORT;
@@ -19,10 +20,11 @@ console.log(host, port, username, password, database);
       username,
       password,
       database,
-      entities: [__dirname + '/entities/*.entity{.ts,.js}'],
+      entities: [__dirname + 'dist/**/*.entity.js'],
       // migrations: [__dirname + '/migrations/*{.ts,.js}'],
       synchronize: true,
     }),
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
