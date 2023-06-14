@@ -9,7 +9,7 @@ import {
 import UserEntityProfile from './user.profile.entity';
 
 @Entity({ name: 'users' })
-export default class UserEntity extends BaseEntity {
+export default class User extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   readonly id: string;
 
