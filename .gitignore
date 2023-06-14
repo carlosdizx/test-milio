@@ -40,3 +40,6 @@ lerna-debug.log*
 #ENVIRONMENTS
 .env
 .env.prod
+
+#Typeorm
+/src/typeorm
