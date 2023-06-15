@@ -8,6 +8,7 @@ import { UpdateUserDto } from '../dto/update-user.dto';
 import { Repository } from 'typeorm';
 import User from '../entities/user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
+import { async } from 'rxjs';
 
 @Injectable()
 export class UsersCrudService {
@@ -49,5 +50,9 @@ export class UsersCrudService {
     if (!user) throw new NotFoundException('User not found');
     await this.repository.remove(user);
     return { message: 'User removed' };
+  };
+
+  public uploadDataFromS3 = async (key: string) => {
+    return 'uploadDataFromS3';
   };
 }
