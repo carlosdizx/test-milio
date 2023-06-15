@@ -29,11 +29,11 @@ export class UsersService {
   };
 
   public findOne = async (id: string) => {
-    return this.repository.findOne({ where: { id } });
+    return this.repository.findOneBy({ id });
   };
 
   public findByEmail = async (email: string) => {
-    return this.repository.findOne({ where: { email } });
+    return this.repository.findOneBy({ email });
   };
 
   public update = async (id: string, { password }: UpdateUserDto) => {
