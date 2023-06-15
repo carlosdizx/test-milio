@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { GetObjectCommand, S3Client } from '@aws-sdk/client-s3';
 import { config } from 'dotenv';
+
 config();
 
 const Bucket = process.env.S3_BUCKET_NAME;
@@ -21,8 +22,7 @@ export class S3Service {
     });
 
     try {
-      const response = await this.s3Client.send(getObjectCommand);
-      return response.Body;
+      return await this.s3Client.send(getObjectCommand);
     } catch (error) {
       throw new NotFoundException("File in S3 does not exist");
     }

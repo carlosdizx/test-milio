@@ -1,14 +1,14 @@
 import {
   BadRequestException,
-  NotFoundException,
   Injectable,
+  NotFoundException,
 } from '@nestjs/common';
 import { CreateUserDto } from '../dto/create-user.dto';
 import { UpdateUserDto } from '../dto/update-user.dto';
 import { Repository } from 'typeorm';
 import User from '../entities/user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { async } from 'rxjs';
+import { parse } from 'csv-parse';
 import { S3Service } from './s3.service';
 
 @Injectable()
@@ -55,8 +55,9 @@ export class UsersCrudService {
   };
 
   public uploadDataFromS3 = async (key: string) => {
-    const response = await this.s3Client.getFileContent(key);
-    console.log(response);
-    return { message: "xd" };
+    const { Body } = await this.s3Client.getFileContent(key);
+
+    const dataString = await Body.transformToString('utf8');
+    return dataString;
   };
 }
