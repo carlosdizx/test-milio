@@ -29,7 +29,9 @@ export class UsersCrudService {
   };
 
   public findOne = async (id: string) => {
-    return this.repository.findOneBy({ id });
+    const user = await this.repository.findOneBy({ id });
+    if (user) return user;
+    throw new NotFoundException('User not found');
   };
 
   public findByEmail = async (email: string) => {
