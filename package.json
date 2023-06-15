@@ -20,7 +20,8 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "serveless:dev": "npm run build && serverless offline",
     "serveless:deploy": "npm run build && serverless deploy",
-    "database:install": "docker-compose down -v && rimraf .\\postgres-data\\ && docker-compose up -d"
+    "database:install": "docker-compose down -v && rimraf .\\postgres-data\\ && docker-compose up -d",
+    "migration:create": "typeorm migration:create src/infrastructure/migrations/mig"
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
