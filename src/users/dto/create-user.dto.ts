@@ -1,13 +1,11 @@
-import { IsEmail, IsNotEmpty, MinLength } from 'class-validator';
-import { Transform } from 'class-transformer';
-
+import { IsString, IsEmail, IsNotEmpty, MinLength } from 'class-validator';
 export class CreateUserDto {
   @IsNotEmpty()
   @IsEmail()
   email: string;
 
+  @IsString()
   @IsNotEmpty()
   @MinLength(8)
-  @Transform(({ value }) => value.trim()) // Opcional: eliminar espacios en blanco alrededor del password
   password: string;
 }

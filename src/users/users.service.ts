@@ -10,9 +10,15 @@ export class UsersService {
   constructor(
     @InjectRepository(User) private readonly repository: Repository<User>,
   ) {}
-  create(createUserDto: CreateUserDto) {
-    return 'This action adds a new user';
-  }K
+  create({ email, password }: CreateUserDto) {
+    console.log('xdxdxd');
+    const user = this.repository.create({
+      email,
+      password,
+    });
+    console.log(user);
+    return this.repository.insert(user);
+  }
 
   findAll() {
     return this.repository.find();
