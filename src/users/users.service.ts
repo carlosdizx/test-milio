@@ -14,7 +14,7 @@ export class UsersService {
   constructor(
     @InjectRepository(User) private readonly repository: Repository<User>,
   ) {}
-  async create({ email, password }: CreateUserDto) {
+  public create = async ({ email, password }: CreateUserDto) => {
     const userFound = await this.findByEmail(email);
     if (userFound) throw new BadRequestException('User already exists');
     const user = this.repository.create({
@@ -22,31 +22,31 @@ export class UsersService {
       password,
     });
     return this.repository.save(user);
-  }
+  };
 
-  async findAll() {
+  public findAll = async () => {
     return this.repository.find();
-  }
+  };
 
-  async findOne(id: string) {
+  public findOne = async (id: string) => {
     return this.repository.findOne({ where: { id } });
-  }
+  };
 
-  async findByEmail(email: string) {
+  public findByEmail = async (email: string) => {
     return this.repository.findOne({ where: { email } });
-  }
+  };
 
-  async update(id: string, { password }: UpdateUserDto) {
+  public update = async (id: string, { password }: UpdateUserDto) => {
     const user = await this.findOne(id);
     if (!user) throw new NotFoundException('User not found');
     user.password = password;
     return this.repository.save(user);
-  }
+  };
 
-  async remove(id: string) {
+  public remove = async (id: string) => {
     const user = await this.findOne(id);
     if (!user) throw new NotFoundException('User not found');
     await user.remove();
     return { message: 'User removed' };
-  }
+  };
 }
