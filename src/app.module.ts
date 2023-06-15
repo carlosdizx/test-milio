@@ -20,7 +20,7 @@ const database = process.env.DB_DATABASE;
       password,
       database,
       entities: ['dist/**/*.entity.js'],
-      synchronize: true,
+      synchronize: false,
     }),
     UsersModule,
   ],
