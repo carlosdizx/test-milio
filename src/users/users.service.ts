@@ -11,21 +11,19 @@ export class UsersService {
     @InjectRepository(User) private readonly repository: Repository<User>,
   ) {}
   create({ email, password }: CreateUserDto) {
-    console.log('xdxdxd');
     const user = this.repository.create({
       email,
       password,
     });
-    console.log(user);
-    return this.repository.insert(user);
+    return this.repository.save(user);
   }
 
   findAll() {
     return this.repository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  findOne(id: string) {
+    return this.repository.findOne({ where: { id } });
   }
 
   update(id: number, updateUserDto: UpdateUserDto) {
