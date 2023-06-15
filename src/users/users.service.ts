@@ -39,8 +39,7 @@ export class UsersService {
   public update = async (id: string, { password }: UpdateUserDto) => {
     const user = await this.findOne(id);
     if (!user) throw new NotFoundException('User not found');
-    user.password = password;
-    return this.repository.save(user);
+    return this.repository.save({ ...user, password });
   };
 
   public remove = async (id: string) => {
