@@ -58,6 +58,25 @@ export class UsersCrudService {
     const { Body } = await this.s3Client.getFileContent(key);
 
     const dataString = await Body.transformToString('utf8');
-    return dataString;
+    return new Promise<any[]>((resolve, reject) => {
+      parse(dataString, { columns: true }, async (error, usersS3) => {
+        if (error) {
+          reject(error);
+        } else {
+          const generateRandomString = () => {
+            return Math.floor(Math.random() * Date.now()).toString(36);
+          };
+          const userLoads: any[] = [];
+          for (const userS3 of usersS3) {
+            const user = await this.create({
+              email: `${userS3.user}-${generateRandomString()}@email.com`,
+              password: `${generateRandomString()}-${generateRandomString()}`,
+            });
+            userLoads.push(user);
+          }
+          resolve(userLoads);
+        }
+      });
+    });
   };
 }
