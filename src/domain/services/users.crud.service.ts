@@ -10,7 +10,7 @@ import User from '../entities/user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
-export class UsersService {
+export class UsersCrudService {
   constructor(
     @InjectRepository(User) private readonly repository: Repository<User>,
   ) {}

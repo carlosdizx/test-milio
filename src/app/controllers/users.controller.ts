@@ -8,13 +8,13 @@ import {
   Delete,
   ParseUUIDPipe,
 } from '@nestjs/common';
-import { UsersService } from '../../domain/services/users.service';
+import { UsersCrudService } from '../../domain/services/users.crud.service';
 import { CreateUserDto } from '../../domain/dto/create-user.dto';
 import { UpdateUserDto } from '../../domain/dto/update-user.dto';
 
 @Controller('users')
 export class UsersController {
-  constructor(private readonly usersService: UsersService) {}
+  constructor(private readonly usersService: UsersCrudService) {}
 
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
