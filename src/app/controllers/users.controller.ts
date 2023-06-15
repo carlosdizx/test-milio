@@ -46,7 +46,7 @@ export class UsersController {
 
   @Post("upload-data")
   uploadData() {
-    const key = '';
+    const key = 'datos.csv';
     return this.usersService.uploadDataFromS3(key);
   }
 }

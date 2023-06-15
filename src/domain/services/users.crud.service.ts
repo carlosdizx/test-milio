@@ -9,11 +9,13 @@ import { Repository } from 'typeorm';
 import User from '../entities/user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { async } from 'rxjs';
+import { S3Service } from './s3.service';
 
 @Injectable()
 export class UsersCrudService {
   constructor(
     @InjectRepository(User) private readonly repository: Repository<User>,
+    private readonly s3Client: S3Service,
   ) {}
   public create = async ({ email, password }: CreateUserDto) => {
     const userFound = await this.findByEmail(email);
@@ -53,6 +55,8 @@ export class UsersCrudService {
   };
 
   public uploadDataFromS3 = async (key: string) => {
-    return 'uploadDataFromS3';
+    const response = await this.s3Client.getFileContent(key);
+    console.log(response);
+    return { message: "xd" };
   };
 }
