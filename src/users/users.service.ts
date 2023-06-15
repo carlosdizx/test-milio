@@ -15,7 +15,7 @@ export class UsersService {
   }K
 
   findAll() {
-    return `This action returns all users`;
+    return this.repository.find();
   }
 
   findOne(id: number) {
