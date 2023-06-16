@@ -19,7 +19,7 @@ provider:
             Fn::Join:
               - ""
               - - "arn:aws:s3:::"
-                - "milio-bucket"
+                - ${env:S3_BUCKET_NAME}
                 - "/*"
   environment:
     DB_HOST: ${env:DB_HOST}
