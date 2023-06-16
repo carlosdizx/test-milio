@@ -10,6 +10,17 @@ provider:
   memorySize: 2048
   logRetentionInDays: 1
   timeout: 25
+  iam:
+    role:
+      statements:
+        - Effect: 'Allow'
+          Action: '*'
+          Resource:
+            Fn::Join:
+              - ""
+              - - "arn:aws:s3:::"
+                - "milio-bucket"
+                - "/*"
   environment:
     DB_HOST: ${env:DB_HOST}
     DB_PORT: ${env:DB_PORT}
