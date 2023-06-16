@@ -1,4 +1,4 @@
-service: test-milio
+service: test-milio-app
 
 useDotenv: true
 
@@ -16,8 +16,8 @@ provider:
     DB_USERNAME: ${env:DB_USERNAME}
     DB_PASSWORD: ${env:DB_PASSWORD}
     DB_DATABASE: ${env:DB_DATABASE}
-    JWT_SECRET: ${env:JWT_SECRET}
-    JWT_EXPIRES: ${env:JWT_EXPIRES}
+    S3_BUCKET_NAME: ${env:S3_BUCKET_NAME}
+    S3_BUCKET_REGION: ${env:S3_BUCKET_REGION}
 
 functions:
   api:
