@@ -58,7 +58,7 @@ export class UsersCrudService {
     const { Body } = await this.s3Client.getFileContent(key);
 
     const dataString = await Body.transformToString('utf8');
-    return new Promise<any[]>((resolve, reject) => {
+    return new Promise<object>((resolve, reject) => {
       parse(dataString, { columns: true }, async (error, usersS3) => {
         if (error) {
           reject(error);
@@ -69,12 +69,13 @@ export class UsersCrudService {
           const userLoads: any[] = [];
           for (const userS3 of usersS3) {
             const user = await this.create({
-              email: `${userS3.user}-${generateRandomString()}@email.com`,
+              email: `${userS3.user}-${generateRandomString()}@mail.com`,
               password: `${generateRandomString()}-${generateRandomString()}`,
             });
             userLoads.push(user);
           }
-          resolve(userLoads);
+          const response = { message: 'Users created', users: userLoads };
+          resolve(response);
         }
       });
     });
