@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './infrastructure/modules/users.module';
+import { S3Service } from './domain/services/s3.service';
 
 const host = process.env.DB_HOST;
 const port = process.env.DB_PORT;
@@ -25,6 +26,6 @@ const database = process.env.DB_DATABASE;
     UsersModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, S3Service],
 })
 export class AppModule {}

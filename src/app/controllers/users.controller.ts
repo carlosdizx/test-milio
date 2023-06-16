@@ -43,4 +43,10 @@ export class UsersController {
   remove(@Param('id', new ParseUUIDPipe({ version: '4' })) id: string) {
     return this.usersService.remove(id);
   }
+
+  @Post("upload-data")
+  uploadData() {
+    const key = 'datos.csv';
+    return this.usersService.uploadDataFromS3(key);
+  }
 }
