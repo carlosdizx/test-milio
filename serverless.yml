@@ -1,4 +1,4 @@
-service: test-milio
+service: test-milio-app
 
 useDotenv: true
 
@@ -10,14 +10,25 @@ provider:
   memorySize: 2048
   logRetentionInDays: 1
   timeout: 25
+  iam:
+    role:
+      statements:
+        - Effect: 'Allow'
+          Action: '*'
+          Resource:
+            Fn::Join:
+              - ""
+              - - "arn:aws:s3:::"
+                - "milio-bucket"
+                - "/*"
   environment:
     DB_HOST: ${env:DB_HOST}
     DB_PORT: ${env:DB_PORT}
     DB_USERNAME: ${env:DB_USERNAME}
     DB_PASSWORD: ${env:DB_PASSWORD}
     DB_DATABASE: ${env:DB_DATABASE}
-    JWT_SECRET: ${env:JWT_SECRET}
-    JWT_EXPIRES: ${env:JWT_EXPIRES}
+    S3_BUCKET_NAME: ${env:S3_BUCKET_NAME}
+    S3_BUCKET_REGION: ${env:S3_BUCKET_REGION}
 
 functions:
   api:

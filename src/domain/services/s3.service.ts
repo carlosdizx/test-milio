@@ -24,6 +24,7 @@ export class S3Service {
     try {
       return await this.s3Client.send(getObjectCommand);
     } catch (error) {
+      console.log(error);
       throw new NotFoundException("File in S3 does not exist");
     }
   }
