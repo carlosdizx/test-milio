@@ -1,0 +1,134 @@
+{
+	"info": {
+		"_postman_id": "12be99ed-c01d-4fb9-91ff-f15bae7bee14",
+		"name": "Mlio App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25752562",
+		"_collection_link": "https://martian-spaceship-530139.postman.co/workspace/KIKI~bada3e76-8082-4f14-a3f9-47d68e892d32/collection/25752562-12be99ed-c01d-4fb9-91ff-f15bae7bee14?action=share&creator=25752562&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "List Users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{MILIO-PROD}}users",
+					"host": [
+						"{{MILIO-PROD}}users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"carlosbiche98+001@mail.com\",\r\n    \"password\": \"12345678\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{MILIO-PROD}}users",
+					"host": [
+						"{{MILIO-PROD}}users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{MILIO-PROD}}users/7c2ffbb9-7832-4025-b25b-448ed96a7b85",
+					"host": [
+						"{{MILIO-PROD}}users"
+					],
+					"path": [
+						"7c2ffbb9-7832-4025-b25b-448ed96a7b85"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update By Id",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"password\": \"12345678***\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{MILIO-PROD}}users/7c2ffbb9-7832-4025-b25b-448ed96a7b85",
+					"host": [
+						"{{MILIO-PROD}}users"
+					],
+					"path": [
+						"7c2ffbb9-7832-4025-b25b-448ed96a7b85"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete by Id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"password\": \"12345678***\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{MILIO-PROD}}users/7c2ffbb9-7832-4025-b25b-448ed96a7b85",
+					"host": [
+						"{{MILIO-PROD}}users"
+					],
+					"path": [
+						"7c2ffbb9-7832-4025-b25b-448ed96a7b85"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload Data",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{MILIO-PROD}}users/upload-data",
+					"host": [
+						"{{MILIO-PROD}}users"
+					],
+					"path": [
+						"upload-data"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
