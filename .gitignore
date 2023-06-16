@@ -40,3 +40,8 @@ lerna-debug.log*
 #ENVIRONMENTS
 .env
 .env.prod
+
+#Typeorm
+/src/typeorm
+/postgres-data/
+/postgres-data/**
